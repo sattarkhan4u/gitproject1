@@ -1,9 +1,5 @@
 pipeline {
-	agent {
-		node {
-			label 'java8'
-		}
-	}
+	
 	tools {
 		maven 'maven-3.3.9'
 	}
