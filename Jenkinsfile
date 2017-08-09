@@ -1,22 +1,26 @@
 pipeline {
+	agent any
 	
-	tools {
-		maven 'maven-3.3.9'
-	}
 	stages {
-		stage('Checkout') {
+		stage('Compile Stage') {
 			steps {
-				git 'https://github.com/bertjan/spring-boot-sample'
+				withMaven(maven : 'm3') {
+					sh 'mvn clean compile'
+				}
 			}
 		}
-		stage('Build') {
+		stage('Testing Stage') {
 			steps {
-				sh 'mvn -B -V -U -e clean package'
+				withMaven(maven : 'm3') {
+					sh 'mvn test'
+				}
 			}
 		}
-		stage('Archive') {
+		stage('Deployment Stage') {
 			steps {
-				junit(testResults: '**/target/**/TEST*.xml',allowEmptyResults: true)
+				withMaven(mavne : 'm3) {
+					sh 'mvn deploy'
+				}
 			}
 		}
 	}
