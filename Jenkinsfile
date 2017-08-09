@@ -4,21 +4,21 @@ pipeline {
 	stages {
 		stage('Compile Stage') {
 			steps {
-				withMaven(maven : 'm3') {
+				mvnTool = tool 'me' {
 					sh 'mvn clean compile'
 				}
 			}
 		}
 		stage('Testing Stage') {
 			steps {
-				withMaven(maven : 'm3') {
+				mvnTool = tool 'me' {
 					sh 'mvn test'
 				}
 			}
 		}
 		stage('Deployment Stage') {
 			steps {
-				withMaven(maven : 'm3') {
+				mvnTool = tool 'me' {
 					sh 'mvn deploy'
 				}
 			}
