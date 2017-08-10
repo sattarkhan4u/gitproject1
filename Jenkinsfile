@@ -1,7 +1,7 @@
 node {
     /* Configure the JDK to use. 'JDK8' is the symbolic name under which the JDK
      * is defined in the global Jenkins configuration. */
-    env.JAVA_HOME="${tool 'Java8'}"
+    env.JAVA_HOME="${tool 'java8'}"
 
     stage 'Build'
     /* Clone the project from github */
